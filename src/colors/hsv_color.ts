@@ -49,7 +49,19 @@ class HSVColor {
     return HSVColor.fromRGB(r, g, b, a);
   }
 
-
+  // otherColor - The other color to mix with
+  // percent - The % of the other color to use when mixing (0 - 100)
+  // Returns a new color that is the mix between these two colors
+  mixWithColor(otherColor: HSVColor, percent: number) {
+    const p = percent / 100;
+    const hueDiff = loopValueInRange(otherColor.hue - this.hue, -180, 180);
+    const saturationDiff = otherColor.saturation - this.saturation;
+    const valueDiff = otherColor.value - this.value;
+    const newHue = this.hue + (hueDiff * percent);
+    const newSaturation = this.saturation + (saturationDiff * percent);
+    const newValue = this.value + (valueDiff * percent);
+    new HSVColor(newHue, newSaturation, newValue, this.alpha);
+  }
 
   toHexString() {
     // TODO - do we want to pre-calc these values?  Since we're immutable and data is small this might just result in extra calculations

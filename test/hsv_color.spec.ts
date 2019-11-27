@@ -1,6 +1,12 @@
 import HSVColor from '../src/colors/hsv_color';
 
 describe("HSVColor", () => {
+  describe("mixWithColor", () => {
+    it("should mix colors correctly", () => {
+      const red = HSVColor.
+    })
+  }
+
   describe("fromColorString", () => {
     it("should build from a hex string", () => {
       const colorObj = HSVColor.fromColorString("#FF3300").toRGBObject();
